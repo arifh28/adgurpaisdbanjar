@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrasi Guru PAI SD - Kota Banjar</title>
+    <meta name="description" content="Portal Administrasi Guru PAI SD (Modul Ajar, CP, ATP, Prota, Promes) KKG Kota Banjar.">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
+    <meta property="og:title" content="Administrasi Guru PAI SD Kota Banjar">
+    <meta property="og:description" content="Pusat unduhan perangkat ajar Kurikulum Merdeka lengkap untuk Guru PAI SD.">
+    <meta property="og:image" content="https://adgurpaisdbanjar.vercel.app/header.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adgurpaisdbanjar.vercel.app/">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm" style="background-color: var(--primary-green);">
+        <div class="container">
+            
+            <div class="d-flex align-items-center">
+                <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                    <img src="assets/logo.png" alt="Logo" width="40" height="40" class="bg-white rounded-circle p-1 shadow-sm">
+                    <span class="page-title ms-2 d-none d-sm-inline">ADGUR PAI SD</span>
+                </a>
+            </div>
+
+            <div class="d-flex align-items-center ms-auto gap-2">                
+                <button class="navbar-toggler border-0 text-white p-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+                    <i class="fas fa-bars fa-lg" id="menuIcon" style="font-size: 1.5rem;"></i>
+                </button>
+            </div>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+                <div class="offcanvas-header bg-light">
+                    <h5 class="offcanvas-title fw-bold text-success">Menu Administrasi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-bold px-3 rounded-pill" href="index.html">
+                                <i class="fas fa-home"></i> Beranda
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-bold px-3 rounded-pill" href="assets/cp_atp_oleh_anisa_nurbasari.xlsx">
+                                <i class="fas fa-network-wired"></i> CP dan ATP
+                            </a>
+                        </li>                                               
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div style="height: 80px;"></div>
+
+    <div class="container pb-5">
+     
+        <h3 class="fw-bold mb-4 border-start border-5 border-warning ps-3">Perangkat Ajar Per Kelas</h3>
+
+<div class="row g-4">
+            
+            <div class="col-12 col-md-6 col-xxl-4">
+                <div class="card custom-card">
+                    <img src="assets/kelas1.png" class="card-img-top" alt="Adm Kelas 1">
+                    <div class="card-body text-center">
+                        <h4 class="fw-bold">Kelas 1</h4>
+                        <p class="small text-muted mb-1">Fase A - Kurikulum Merdeka</p>
+                        
+                        <div class="mb-3 small text-success fw-bold p-2 bg-light rounded">
+                            <i class="fas fa-cloud-download-alt me-1"></i> 
+                            <span class="download-counter" data-kelas="kelas_1">0</span> Guru telah mengunduh
+                        </div>
+
+                        <a href="javascript:void(0)" onclick="trackDownload('kelas_1', 'assets/kelas1.zip')" class="btn btn-custom">
+                            Buka Perangkat <i class="fas fa-folder-open ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-xxl-4">
+                <div class="card custom-card">
+                    <img src="assets/kelas2.png" class="card-img-top" alt="Adm Kelas 2">
+                    <div class="card-body text-center">
+                        <h4 class="fw-bold">Kelas 2</h4>
+                        <p class="small text-muted mb-1">Fase A - Kurikulum Merdeka</p>
+                        
+                        <div class="mb-3 small text-success fw-bold p-2 bg-light rounded">
+                            <i class="fas fa-cloud-download-alt me-1"></i> 
+                            <span class="download-counter" data-kelas="kelas_2">0</span> Guru telah mengunduh
+                        </div>
+
+                        <a href="javascript:void(0)" onclick="trackDownload('kelas_2', 'assets/kelas2.zip')" class="btn btn-custom">
+                            Buka Perangkat <i class="fas fa-folder-open ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+			
+            <div class="col-12 col-md-6 col-xxl-4">
+                <div class="card custom-card">
+                    <img src="assets/kelas3.png" class="card-img-top" alt="Adm Kelas 3">
+                    <div class="card-body text-center">
+                        <h4 class="fw-bold">Kelas 3</h4>
+                        <p class="small text-muted mb-1">Fase B - Kurikulum Merdeka</p>
+
+                        <div class="mb-3 small text-success fw-bold p-2 bg-light rounded">
+                            <i class="fas fa-cloud-download-alt me-1"></i> 
+                            <span class="download-counter" data-kelas="kelas_3">0</span> Guru telah mengunduh
+                        </div>
+
+                        <a href="javascript:void(0)" onclick="trackDownload('kelas_3', 'assets/kelas3.zip')" class="btn btn-custom">
+                            Buka Perangkat <i class="fas fa-folder-open ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+			
+            <div class="col-12 col-md-6 col-xxl-4">
+                <div class="card custom-card">
+                    <img src="assets/kelas4.png" class="card-img-top" alt="Adm Kelas 4">
+                    <div class="card-body text-center">
+                        <h4 class="fw-bold">Kelas 4</h4>
+                        <p class="small text-muted mb-1">Fase B - Kurikulum Merdeka</p>
+
+                        <div class="mb-3 small text-success fw-bold p-2 bg-light rounded">
+                            <i class="fas fa-cloud-download-alt me-1"></i> 
+                            <span class="download-counter" data-kelas="kelas_4">0</span> Guru telah mengunduh
+                        </div>
+
+                        <a href="javascript:void(0)" onclick="trackDownload('kelas_4', 'assets/kelas4.zip')" class="btn btn-custom">
+                            Buka Perangkat <i class="fas fa-folder-open ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+			
+            <div class="col-12 col-md-6 col-xxl-4">
+                <div class="card custom-card">
+                    <img src="assets/kelas5.png" class="card-img-top" alt="Adm Kelas 5">
+                    <div class="card-body text-center">
+                        <h4 class="fw-bold">Kelas 5</h4>
+                        <p class="small text-muted mb-1">Fase C - Kurikulum Merdeka</p>
+
+                        <div class="mb-3 small text-success fw-bold p-2 bg-light rounded">
+                            <i class="fas fa-cloud-download-alt me-1"></i> 
+                            <span class="download-counter" data-kelas="kelas_5">0</span> Guru telah mengunduh
+                        </div>
+
+                        <a href="javascript:void(0)" onclick="trackDownload('kelas_5', 'assets/kelas5.zip')" class="btn btn-custom">
+                            Buka Perangkat <i class="fas fa-folder-open ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+			
+            <div class="col-12 col-md-6 col-xxl-4">
+                <div class="card custom-card">
+                    <img src="assets/kelas6.png" class="card-img-top" alt="Adm Kelas 6">
+                    <div class="card-body text-center">
+                        <h4 class="fw-bold">Kelas 6</h4>
+                        <p class="small text-muted mb-1">Fase C - Kurikulum Merdeka</p>
+
+                        <div class="mb-3 small text-success fw-bold p-2 bg-light rounded">
+                            <i class="fas fa-cloud-download-alt me-1"></i> 
+                            <span class="download-counter" data-kelas="kelas_6">0</span> Guru telah mengunduh
+                        </div>
+
+                        <a href="javascript:void(0)" onclick="trackDownload('kelas_6', 'assets/kelas6.zip')" class="btn btn-custom">
+                            Buka Perangkat <i class="fas fa-folder-open ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		<hr class="my-5 border-warning opacity-50" style="border-width: 3px;">
+
+    </div>
+
+    <div class="row mb-4 ms-5 me-5">
+            <div class="col-12">
+                <div class="card custom-card text-white overflow-hidden" style="background: linear-gradient(45deg, #4ECDC4, #2CB5AC);">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-md-8 p-4">
+                            <h3 class="fw-bold"><i class="fas fa-clipboard-check me-2"></i> Administrasi Harian & Penilaian</h3>
+                            <p class="mb-3">Unduh format Jurnal Harian, Daftar Hadir, Daftar Nilai, KKTP, Kaldik, dan Analisis Asesmen (Format Excel).</p>
+                            <a href="administrasi_lainnya.html" class="btn btn-light text-success fw-bold rounded-pill px-4 shadow-sm">
+                                Buka Administrasi <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-4 text-center d-none d-md-block">
+                            <i class="fas fa-tasks text-white opacity-25" style="font-size: 8rem; margin-bottom: -20px;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <footer class="main-footer text-center py-4 mt-auto">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <p class="mb-0 fw-bold" style="color: #292f36;">
+                        &copy; KKG PAI SD Kota Banjar Jawa Barat 2026
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/script.js"></script>
+</body>
+</html>

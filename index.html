@@ -3,224 +3,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrasi Guru PAI SD - Kota Banjar</title>
-    <meta name="description" content="Portal Administrasi Guru PAI SD (Modul Ajar, CP, ATP, Prota, Promes) KKG Kota Banjar.">
-    <link rel="icon" type="image/png" href="assets/logo.png">
-
-    <meta property="og:title" content="Administrasi Guru PAI SD Kota Banjar">
-    <meta property="og:description" content="Pusat unduhan perangkat ajar Kurikulum Merdeka lengkap untuk Guru PAI SD.">
-    <meta property="og:image" content="https://adgurpaisdbanjar.vercel.app/header.png">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://adgurpaisdbanjar.vercel.app/">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>AsistenPAI - Aplikasi Administrasi Guru PAI</title>
     
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fcfcfc;
+            color: #333;
+        }
+        
+        /* Typography & Colors */
+        .text-blue { color: #0d6efd; }
+        .bg-blue-light { background-color: #e6f0ff; color: #0d6efd; }
+        .bg-green-light { background-color: #e8f5e9; color: #198754; }
+        .bg-yellow-light { background-color: #fff8e1; color: #ffc107; }
+        .bg-purple-light { background-color: #f3e5f5; color: #9c27b0; }
+        
+        /* Section Badge (Outline Rounded) */
+        .section-badge {
+            display: inline-block;
+            border: 2px solid #0d6efd;
+            color: #0d6efd;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        /* Buttons */
+        .btn-primary-custom {
+            background-color: #0d6efd;
+            border: none;
+            padding: 12px 24px;
+            font-weight: 700;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(13, 110, 253, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-primary-custom:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+            color: #fff;
+        }
+        .btn-outline-custom {
+            border: 2px solid #0d6efd;
+            color: #0d6efd;
+            padding: 12px 24px;
+            font-weight: 700;
+            border-radius: 10px;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-custom:hover {
+            background: #e6f0ff;
+            color: #0b5ed7;
+        }
+
+        /* Cards with Subtle Gradients */
+        .feature-card {
+            border: 1px solid #f0f0f0;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            overflow: hidden;
+        }
+        .feature-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+        
+        .card-grad-blue { background: linear-gradient(145deg, #ffffff 40%, #f0f6ff 100%); }
+        .card-grad-green { background: linear-gradient(145deg, #ffffff 40%, #f1f8f2 100%); }
+        .card-grad-yellow { background: linear-gradient(145deg, #ffffff 40%, #fffbf0 100%); }
+        
+        .icon-box {
+            width: 56px; height: 56px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px; margin-bottom: 20px;
+        }
+
+        /* Team Card */
+        .team-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid #eaeaea;
+            text-align: center;
+        }
+        .team-avatar {
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e6f0ff;
+            margin-bottom: 15px;
+        }
+
+        /* Alert Old Version */
+        .alert-old-version {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            border-radius: 8px;
+        }
+
+        /* --- TAMBAHAN STYLING BARU --- */
+        
+        /* Gradien halus untuk background section */
+        .hero-gradient { 
+            /* Latar belakang warna dasar jika gambar gagal dimuat */
+            background-color: #f8fbff; 
+            
+            /* Menggabungkan gambar background dan posisinya */
+            background-image: url('assets/images/bg-hero-abstract.jpg'); 
+            
+            /* KUNCI 1: Posisi gambar dipaksa rapat ke kanan dan tengah secara vertikal */
+            background-position: center right; 
+            
+            /* KUNCI 2: Gambar tidak berulang */
+            background-repeat: no-repeat; 
+            
+            /* KUNCI 3: Cover memastikan gambar menutupi tinggi section, 
+            tapi bagian kirinya yang kosong akan memanjang */
+            background-size: cover; 
+        }
+
+
+        .soft-blue-bg { background-color: #f8fbff; }
+        
+        /* Background tegas & menarik untuk section Galeri */
+        .primary-dark-gradient { 
+            background: linear-gradient(135deg, #0d6efd 0%, #0043a8 100%); 
+            color: #ffffff;
+        }
+        .section-badge-white {
+            border-color: #ffffff;
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Styling untuk gambar screenshot HP */
+        .app-screenshot {
+            border-radius: 24px;
+            border: 6px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: #fff;
+        }
+        .app-screenshot:hover {
+            transform: translateY(-15px) scale(1.03);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.3);
+        }
+
+        /* Penyesuaian untuk layar mobile (HP) */
+        @media (max-width: 991px) {
+            .hero-gradient {
+                /* Di layar kecil, layout bertumpuk. 
+                Ubah posisi background agar tidak menabrak teks yang pindah ke atas/bawah */
+                background-position: bottom center; 
+                
+                /* Atau opsional: sembunyikan gambar background di mobile agar lebih bersih */
+                /* background-image: none; */ 
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg fixed-top shadow-sm" style="background-color: var(--primary-green);">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 sticky-top border-bottom shadow-sm">
         <div class="container">
-            
-            <div class="d-flex align-items-center">
-                <a href="index.html" class="d-flex align-items-center text-decoration-none">
-                    <img src="assets/logo.png" alt="Logo" width="40" height="40" class="bg-white rounded-circle p-1 shadow-sm">
-                    <span class="page-title ms-2 d-none d-sm-inline">ADGUR PAI SD</span>
-                </a>
-            </div>
-
-            <div class="d-flex align-items-center ms-auto gap-2">                
-                <button class="navbar-toggler border-0 text-white p-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
-                    <i class="fas fa-bars fa-lg" id="menuIcon" style="font-size: 1.5rem;"></i>
-                </button>
-            </div>
-
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
-                <div class="offcanvas-header bg-light">
-                    <h5 class="offcanvas-title fw-bold text-success">Menu Administrasi</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
-                        <li class="nav-item">
-                            <a class="nav-link text-white fw-bold px-3 rounded-pill" href="index.html">
-                                <i class="fas fa-home"></i> Beranda
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white fw-bold px-3 rounded-pill" href="assets/cp_atp_oleh_anisa_nurbasari.xlsx">
-                                <i class="fas fa-network-wired"></i> CP dan ATP
-                            </a>
-                        </li>                                               
-                    </ul>
-                </div>
+            <a class="navbar-brand fw-bold fs-4" href="#">
+                <i class="bi bi-book-half text-blue me-2"></i>Asisten<span class="text-blue">PAI</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link fw-medium px-3" href="#fitur">Fitur</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium px-3" href="#galeri">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium px-3" href="#tim">Tim Kami</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium px-3 text-warning" href="old/index.html"><i class="bi bi-archive me-1"></i>Versi Lama (File)</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="#" class="btn btn-outline-custom btn-sm px-4">Login Web Admin</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 
-    <div style="height: 80px;"></div>
-
-    <div class="container pb-5">
-     
-        <h3 class="fw-bold mb-4 border-start border-5 border-warning ps-3">Perangkat Ajar Per Kelas</h3>
-
-<div class="row g-4">
-            
-            <div class="col-12 col-md-6 col-xxl-4">
-                <div class="card custom-card">
-                    <img src="assets/kelas1.png" class="card-img-top" alt="Adm Kelas 1">
-                    <div class="card-body text-center">
-                        <h4 class="fw-bold">Kelas 1</h4>
-                        <p class="small text-muted mb-1">Fase A - Kurikulum Merdeka</p>
-                        
-                        <div class="mb-3 small text-success fw-bold p-2 bg-light rounded">
-                            <i class="fas fa-cloud-download-alt me-1"></i> 
-                            <span class="download-counter" data-kelas="kelas_1">0</span> Guru telah mengunduh
-                        </div>
-
-                        <a href="javascript:void(0)" onclick="trackDownload('kelas_1', 'assets/kelas1.zip')" class="btn btn-custom">
-                            Buka Perangkat <i class="fas fa-folder-open ms-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-xxl-4">
-                <div class="card custom-card">
-                    <img src="assets/kelas2.png" class="card-img-top" alt="Adm Kelas 2">
-                    <div class="card-body text-center">
-                        <h4 class="fw-bold">Kelas 2</h4>
-                        <p class="small text-muted mb-1">Fase A - Kurikulum Merdeka</p>
-                        
-                        <div class="mb-3 small text-success fw-bold p-2 bg-light rounded">
-                            <i class="fas fa-cloud-download-alt me-1"></i> 
-                            <span class="download-counter" data-kelas="kelas_2">0</span> Guru telah mengunduh
-                        </div>
-
-                        <a href="javascript:void(0)" onclick="trackDownload('kelas_2', 'assets/kelas2.zip')" class="btn btn-custom">
-                            Buka Perangkat <i class="fas fa-folder-open ms-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-			
-            <div class="col-12 col-md-6 col-xxl-4">
-                <div class="card custom-card">
-                    <img src="assets/kelas3.png" class="card-img-top" alt="Adm Kelas 3">
-                    <div class="card-body text-center">
-                        <h4 class="fw-bold">Kelas 3</h4>
-                        <p class="small text-muted mb-1">Fase B - Kurikulum Merdeka</p>
-
-                        <div class="mb-3 small text-success fw-bold p-2 bg-light rounded">
-                            <i class="fas fa-cloud-download-alt me-1"></i> 
-                            <span class="download-counter" data-kelas="kelas_3">0</span> Guru telah mengunduh
-                        </div>
-
-                        <a href="javascript:void(0)" onclick="trackDownload('kelas_3', 'assets/kelas3.zip')" class="btn btn-custom">
-                            Buka Perangkat <i class="fas fa-folder-open ms-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-			
-            <div class="col-12 col-md-6 col-xxl-4">
-                <div class="card custom-card">
-                    <img src="assets/kelas4.png" class="card-img-top" alt="Adm Kelas 4">
-                    <div class="card-body text-center">
-                        <h4 class="fw-bold">Kelas 4</h4>
-                        <p class="small text-muted mb-1">Fase B - Kurikulum Merdeka</p>
-
-                        <div class="mb-3 small text-success fw-bold p-2 bg-light rounded">
-                            <i class="fas fa-cloud-download-alt me-1"></i> 
-                            <span class="download-counter" data-kelas="kelas_4">0</span> Guru telah mengunduh
-                        </div>
-
-                        <a href="javascript:void(0)" onclick="trackDownload('kelas_4', 'assets/kelas4.zip')" class="btn btn-custom">
-                            Buka Perangkat <i class="fas fa-folder-open ms-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-			
-            <div class="col-12 col-md-6 col-xxl-4">
-                <div class="card custom-card">
-                    <img src="assets/kelas5.png" class="card-img-top" alt="Adm Kelas 5">
-                    <div class="card-body text-center">
-                        <h4 class="fw-bold">Kelas 5</h4>
-                        <p class="small text-muted mb-1">Fase C - Kurikulum Merdeka</p>
-
-                        <div class="mb-3 small text-success fw-bold p-2 bg-light rounded">
-                            <i class="fas fa-cloud-download-alt me-1"></i> 
-                            <span class="download-counter" data-kelas="kelas_5">0</span> Guru telah mengunduh
-                        </div>
-
-                        <a href="javascript:void(0)" onclick="trackDownload('kelas_5', 'assets/kelas5.zip')" class="btn btn-custom">
-                            Buka Perangkat <i class="fas fa-folder-open ms-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-			
-            <div class="col-12 col-md-6 col-xxl-4">
-                <div class="card custom-card">
-                    <img src="assets/kelas6.png" class="card-img-top" alt="Adm Kelas 6">
-                    <div class="card-body text-center">
-                        <h4 class="fw-bold">Kelas 6</h4>
-                        <p class="small text-muted mb-1">Fase C - Kurikulum Merdeka</p>
-
-                        <div class="mb-3 small text-success fw-bold p-2 bg-light rounded">
-                            <i class="fas fa-cloud-download-alt me-1"></i> 
-                            <span class="download-counter" data-kelas="kelas_6">0</span> Guru telah mengunduh
-                        </div>
-
-                        <a href="javascript:void(0)" onclick="trackDownload('kelas_6', 'assets/kelas6.zip')" class="btn btn-custom">
-                            Buka Perangkat <i class="fas fa-folder-open ms-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-		
-		<hr class="my-5 border-warning opacity-50" style="border-width: 3px;">
-
-    </div>
-
-    <div class="row mb-4 ms-5 me-5">
-            <div class="col-12">
-                <div class="card custom-card text-white overflow-hidden" style="background: linear-gradient(45deg, #4ECDC4, #2CB5AC);">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-8 p-4">
-                            <h3 class="fw-bold"><i class="fas fa-clipboard-check me-2"></i> Administrasi Harian & Penilaian</h3>
-                            <p class="mb-3">Unduh format Jurnal Harian, Daftar Hadir, Daftar Nilai, KKTP, Kaldik, dan Analisis Asesmen (Format Excel).</p>
-                            <a href="administrasi_lainnya.html" class="btn btn-light text-success fw-bold rounded-pill px-4 shadow-sm">
-                                Buka Administrasi <i class="fas fa-arrow-right ms-2"></i>
-                            </a>
-                        </div>
-                        <div class="col-md-4 text-center d-none d-md-block">
-                            <i class="fas fa-tasks text-white opacity-25" style="font-size: 8rem; margin-bottom: -20px;"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    <footer class="main-footer text-center py-4 mt-auto">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-12">
-                    <p class="mb-0 fw-bold" style="color: #292f36;">
-                        &copy; KKG PAI SD Kota Banjar Jawa Barat 2026
+    <section class="py-5 hero-gradient">
+        <div class="container py-lg-5">
+            <div class="row align-items-center flex-column-reverse flex-lg-row">
+                <div class="col-lg-6 text-center text-lg-start mt-5 mt-lg-0 pe-lg-5">
+                    <div class="section-badge mb-3">Rilis Terbaru Terintegrasi</div>
+                    <h1 class="fw-bold mb-4" style="font-size: 2.8rem; line-height: 1.2;">
+                        Sistem Administrasi <span class="text-blue">Guru PAI</span> Berbasis Mobile & Cloud
+                    </h1>
+                    <p class="lead text-muted mb-4">
+                        Tingkatkan produktivitas mengajar. Aplikasi mobile-ready dengan fitur pembuatan dokumen otomatis yang tersinkronisasi langsung melalui Akun Google Anda.
                     </p>
+                    
+                    <div class="alert alert-old-version d-inline-block text-start p-3 mb-4 w-100">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-info-circle-fill text-warning fs-4 me-3"></i>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Mencari Versi Lama?</h6>
+                                <p class="mb-0 small text-muted">Akses generator dokumen berbasis file bebas download di <a href="old/index.html" class="text-primary fw-bold text-decoration-none">halaman versi lama</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+                        <a href="Guru-KKG_PAI_Kota_Banjar.apk" id="btn-download" class="btn btn-primary-custom d-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-android2 fs-5"></i> Download APK (~29MB)
+                        </a>
+                        <a href="#" class="btn btn-outline-custom d-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-laptop fs-5"></i> Buka Web Admin
+                        </a>
+                    </div>
+                    <div class="d-flex gap-4 mt-4 justify-content-center justify-content-lg-start">
+                        <div class="text-center text-lg-start">
+                            <h4 class="fw-bold mb-0 text-blue" id="view-count">...</h4>
+                            <p class="small text-muted mb-0">Pengunjung</p>
+                        </div>
+                        <div class="vr"></div>
+                        <div class="text-center text-lg-start">
+                            <h4 class="fw-bold mb-0 text-success" id="download-count">...</h4>
+                            <p class="small text-muted mb-0">Downloads</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://via.placeholder.com/400x700?text=Screenshot+Dashboard+App" alt="Dashboard App" class="img-fluid rounded-4 shadow-lg app-screenshot" style="max-height: 600px;">
                 </div>
             </div>
         </div>
-    </footer>    
+    </section>
 
+    <section id="fitur" class="py-5 soft-blue-bg border-top">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <div class="section-badge">Fitur Utama</div>
+                <h2 class="fw-bold">Semua dalam Satu Genggaman</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card feature-card card-grad-blue p-4">
+                        <div class="icon-box bg-blue-light">
+                            <i class="bi bi-folder-check"></i>
+                        </div>
+                        <h5 class="fw-bold">Manajemen Administrasi</h5>
+                        <p class="text-muted small">Buat dan kelola RPP, Modul Ajar, Prota, Promes, ATP, hingga KKTP. Terintegrasi dengan Web Adminisasi Guru untuk penarikan data via Excel.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card feature-card card-grad-green p-4">
+                        <div class="icon-box bg-green-light">
+                            <i class="bi bi-clipboard-check"></i>
+                        </div>
+                        <h5 class="fw-bold">Presensi & Input Nilai</h5>
+                        <p class="text-muted small">Input kehadiran harian dan nilai siswa (Fikih, Akhlak, dll) per kelas dengan antarmuka yang ramah pengguna. Data aman tersimpan di lokal dan cloud.</p>
+                    </div>
+                </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/script.js"></script>
+                <div class="col-md-4">
+                    <div class="card feature-card card-grad-yellow p-4">
+                        <div class="icon-box bg-yellow-light">
+                            <i class="bi bi-moon-stars"></i>
+                        </div>
+                        <h5 class="fw-bold">Al-Qur'an & Jadwal Ibadah</h5>
+                        <p class="text-muted small">Al-Qur'an digital 114 Surah dengan penanda ayat terakhir dibaca, serta jadwal sholat real-time yang menyesuaikan lokasi mengajar Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeri" class="py-5 primary-dark-gradient">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <div class="section-badge section-badge-white">Galeri Aplikasi</div>
+                <h2 class="fw-bold text-white mb-3">Intip Tampilan AsistenPAI</h2>
+                <p class="text-white-50" style="max-width: 600px; margin: 0 auto;">Karena kami mendistribusikan aplikasi secara langsung (tanpa Play Store), berikut adalah cuplikan fitur dan kemudahan yang akan Anda nikmati.</p>
+            </div>
+            
+            <div class="row justify-content-center g-4 mt-3">
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://via.placeholder.com/300x600?text=Menu+Administrasi" alt="Menu Administrasi" class="img-fluid app-screenshot mb-3">
+                    <h6 class="text-white fw-bold">Administrasi Guru</h6>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://via.placeholder.com/300x600?text=Presensi+Kelas" alt="Presensi Kelas" class="img-fluid app-screenshot mb-3">
+                    <h6 class="text-white fw-bold">Presensi Praktis</h6>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://via.placeholder.com/300x600?text=Input+Nilai" alt="Input Nilai" class="img-fluid app-screenshot mb-3">
+                    <h6 class="text-white fw-bold">Input Nilai Lokal</h6>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="https://via.placeholder.com/300x600?text=Al-Quran" alt="Al-Quran Digital" class="img-fluid app-screenshot mb-3">
+                    <h6 class="text-white fw-bold">Al-Qur'an Digital</h6>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="tim" class="py-5 bg-white border-top">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <div class="section-badge">Di Balik Layar</div>
+                <h2 class="fw-bold">Tim Pengembang & Penyusun</h2>
+                <p class="text-muted">Aplikasi ini dirancang dari guru, oleh guru, dan untuk guru.</p>
+            </div>
+
+            <div class="row justify-content-center g-4">
+                <div class="col-md-5">
+                    <h5 class="fw-bold text-center mb-4 text-secondary">Penyusun Administrasi</h5>
+                    <div class="team-card">
+                        <img src="https://via.placeholder.com/80?text=AH" alt="Foto Profil" class="team-avatar">
+                        <h5 class="fw-bold mb-1">Anisa Nurbasari, S.Pd.I.</h5>
+                        <p class="text-muted small mb-2"><i class="bi bi-building me-1"></i> UPTD SDN 1 Sukamukti</p>
+                        <span class="badge bg-light text-dark border">Guru PAI</span>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <h5 class="fw-bold text-center mb-4 text-secondary">Pengembang Aplikasi</h5>
+                    <div class="team-card">
+                        <img src="https://via.placeholder.com/80?text=Dev" alt="Foto Profil" class="team-avatar">
+                        <h5 class="fw-bold mb-1">Yoonesh Adrian</h5>
+                        <p class="text-muted small mb-2"><i class="bi bi-code-slash me-1"></i> Satset Web / App Dev</p>
+                        <span class="badge bg-light text-dark border">Fullstack Developer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h4 class="fw-bold mb-3"><i class="bi bi-book-half text-primary me-2"></i>Asisten<span class="text-primary">PAI</span></h4>
+                    <p class="text-secondary small" style="max-width: 300px;">Sistem manajemen administrasi dan utilitas keagamaan terpadu untuk mempermudah tugas mulia Guru Pendidikan Agama Islam.</p>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h6 class="fw-bold mb-3">Tautan Ekosistem</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="https://admin.domainanda.com" class="text-secondary text-decoration-none hover-white">Web Administrasi Guru</a></li>
+                        <li class="mb-2"><a href="old/index.html" class="text-secondary text-decoration-none hover-white">Versi Lama (File Generator)</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none hover-white">Media Pembelajaran Interaktif</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none hover-white">PAI Edusite</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold mb-3">Bantuan</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none hover-white">Panduan Sinkronisasi</a></li>
+                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none hover-white">Kontak Dukungan</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-4 pt-4 text-center text-secondary small">
+                &copy; 2026 AsistenPAI. Dikembangkan dengan ❤️ untuk Pendidikan Indonesia.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        // Konfigurasi Supabase
+        const SUPABASE_URL = 'https://oisrtlcxdwgvzrxrlzpb.supabase.co'; 
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pc3J0bGN4ZHdndnpyeHJsenBiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwMzM3OTEsImV4cCI6MjA3ODYwOTc5MX0.aI162olkIydnJrRxLnC0NsBU9umySmd2nWSTt8Hc1ec'; 
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // Fungsi mengambil data terbaru
+        async function fetchStats() {
+            const { data, error } = await _supabase
+                .from('stats')
+                .select('*');
+
+            if (data) {
+                data.forEach(item => {
+                    if (item.id === 'page_views') document.getElementById('view-count').innerText = item.count.toLocaleString();
+                    if (item.id === 'downloads') document.getElementById('download-count').innerText = item.count.toLocaleString();
+                });
+            }
+        }
+
+        // Fungsi mencatat kunjungan (Page View)
+        async function trackVisit() {
+            await _supabase.rpc('increment_stat', { row_id: 'page_views' });
+            fetchStats();
+        }
+
+        // Fungsi mencatat download
+        async function trackDownload(e) {
+            // Jangan hentikan download asli, cukup kirim sinyal ke supabase
+            await _supabase.rpc('increment_stat', { row_id: 'downloads' });
+            fetchStats();
+        }
+
+        // Inisialisasi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            trackVisit();
+            
+            // Pasang event listener ke tombol download
+            // Pastikan element <a> APK Anda punya id="download-apk"
+            const downloadBtn = document.querySelector('a[href*=".apk"]');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', trackDownload);
+            }
+        });
+    </script>
+    <style>
+        .hover-white:hover { color: #fff !important; }
+    </style>
 </body>
 </html>
