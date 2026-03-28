@@ -155,17 +155,27 @@
         
         /* Styling untuk gambar screenshot HP */
         .app-screenshot {
-            border-radius: 24px;
-            border: 6px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background-color: #fff;
+            background-color: transparent;
         }
         .app-screenshot:hover {
             transform: translateY(-15px) scale(1.03);
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 25px 45px rgba(0,0,0,0.3);
         }
+
+        /* Styling Tambahan untuk Tombol Dua Baris */
+.btn-primary-custom.d-flex.align-items-center {
+    max-width: fit-content; /* Agar tombol tidak melebar penuh di mobile jika tidak perlu */
+}
+
+/* Penyesuaian ikon di mobile agar tidak terlalu besar */
+@media (max-width: 576px) {
+    .btn-primary-custom i.fs-1 {
+        font-size: 1.8rem !important;
+    }
+    .btn-primary-custom span.fs-5 {
+        font-size: 1rem !important;
+    }
+}
 
         /* Penyesuaian untuk layar mobile (HP) */
         @media (max-width: 991px) {
@@ -227,8 +237,12 @@
                     </div>
 
                     <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
-                        <a href="Guru-KKG_PAI_Kota_Banjar.apk" id="btn-download" class="btn btn-primary-custom d-flex align-items-center justify-content-center gap-2">
-                            <i class="bi bi-android2 fs-5"></i> Download APK Versi Alpha (~29MB)
+                        <a href="Guru-KKG_PAI_Kota_Banjar.apk" id="btn-download" class="btn btn-primary-custom d-flex align-items-center gap-3 text-start p-3">
+                            <i class="bi bi-android2 fs-1"></i>                            
+                            <div class="d-flex flex-column">
+                                <span class="fw-bold fs-5 text-uppercase mb-0" style="letter-spacing: 0.5px;">Download APK</span>
+                                <span class="small opacity-75 fw-medium">Versi Alpha (~29MB)</span>
+                            </div>
                         </a>
                         <a href="https://script.google.com/macros/s/AKfycbzLgOr0z8dBWBfATtNDQtZ3oZWhooRJxp0lAyzDkLUS4BRrZLFOYE2-tPJSG_0PeCHM/exec" class="btn btn-outline-custom d-flex align-items-center justify-content-center gap-2">
                             <i class="bi bi-laptop fs-5"></i> Buka Web Guru
@@ -247,7 +261,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="https://via.placeholder.com/400x700?text=Screenshot+Dashboard+App" alt="Dashboard App" class="img-fluid rounded-4 shadow-lg app-screenshot" style="max-height: 600px;">
+                    <img src="assets/images/app-hero.png" alt="Dashboard App" class="img-fluid rounded-4 app-screenshot" style="max-height: 600px;">
                 </div>
             </div>
         </div>
