@@ -3,199 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AsistenPAI - Aplikasi Administrasi Guru PAI</title>
     
+    <!-- PERUBAHAN SEO: Title Tag dioptimasi dengan kata kunci target -->
+    <title>Administrasi PAI SD Kota Banjar - Aplikasi AsistenPAI Guru</title>
+    
+    <!-- PERUBAHAN SEO: Meta Description ditambahkan untuk ringkasan di hasil pencarian Google -->
+    <meta name="description" content="Pusat administrasi PAI SD Kota Banjar terlengkap. Download aplikasi AsistenPAI, Modul Ajar, RPP, Prota, Promes, dan kelengkapan mengajar Guru PAI Kurikulum Merdeka.">
+    
+    <!-- PERUBAHAN SEO: Meta Keywords ditambahkan (opsional namun baik untuk penegasan) -->
+    <meta name="keywords" content="administrasi pai kota banjar, administrasi pai sd kota banjar, asistenpai, aplikasi administrasi guru pai, guru pai sd banjar, modul ajar pai sd">
+    
+    <!-- PERUBAHAN SEO: Canonical tag agar Google tahu ini halaman utama -->
+    <link rel="canonical" href="https://administrasigpaisdkotabanjar.my.id/">
+    <meta property="og:url" content="https://administrasigpaisdkotabanjar.my.id/assets/images/og_image.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #fcfcfc;
-            color: #333;
-        }
-        
-        /* Typography & Colors */
-        .text-blue { color: #0d6efd; }
-        .bg-blue-light { background-color: #e6f0ff; color: #0d6efd; }
-        .bg-green-light { background-color: #e8f5e9; color: #198754; }
-        .bg-yellow-light { background-color: #fff8e1; color: #ffc107; }
-        .bg-purple-light { background-color: #f3e5f5; color: #9c27b0; }
-        
-        /* Section Badge (Outline Rounded) */
-        .section-badge {
-            display: inline-block;
-            border: 2px solid #0d6efd;
-            color: #0d6efd;
-            padding: 6px 20px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-
-        /* Buttons */
-        .btn-primary-custom {
-            background-color: #0d6efd;
-            border: none;
-            padding: 12px 24px;
-            font-weight: 700;
-            border-radius: 10px;
-            box-shadow: 0 4px 14px rgba(13, 110, 253, 0.3);
-            transition: all 0.3s ease;
-        }
-        .btn-primary-custom:hover {
-            background-color: #0b5ed7;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
-            color: #fff;
-        }
-        .btn-outline-custom {
-            border: 2px solid #0d6efd;
-            color: #0d6efd;
-            padding: 12px 24px;
-            font-weight: 700;
-            border-radius: 10px;
-            background: transparent;
-            transition: all 0.3s ease;
-        }
-        .btn-outline-custom:hover {
-            background: #e6f0ff;
-            color: #0b5ed7;
-        }
-
-        /* Cards with Subtle Gradients */
-        .feature-card {
-            border: 1px solid #f0f0f0;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.03);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-            overflow: hidden;
-        }
-        .feature-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-        }
-        
-        .card-grad-blue { background: linear-gradient(145deg, #ffffff 40%, #f0f6ff 100%); }
-        .card-grad-green { background: linear-gradient(145deg, #ffffff 40%, #f1f8f2 100%); }
-        .card-grad-yellow { background: linear-gradient(145deg, #ffffff 40%, #fffbf0 100%); }
-        
-        .icon-box {
-            width: 56px; height: 56px;
-            border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 26px; margin-bottom: 20px;
-        }
-
-        /* Team Card */
-        .team-card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid #eaeaea;
-            text-align: center;
-        }
-        .team-avatar {
-            width: 80px; height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #e6f0ff;
-            margin-bottom: 15px;
-        }
-
-        /* Alert Old Version */
-        .alert-old-version {
-            background-color: #fff8e1;
-            border-left: 4px solid #ffc107;
-            border-radius: 8px;
-        }
-
-        /* --- TAMBAHAN STYLING BARU --- */
-        
-        /* Gradien halus untuk background section */
-        .hero-gradient { 
-            /* Latar belakang warna dasar jika gambar gagal dimuat */
-            background-color: #f8fbff; 
-            
-            /* Menggabungkan gambar background dan posisinya */
-            background-image: url('assets/images/bg-hero-abstract.jpg'); 
-            
-            /* KUNCI 1: Posisi gambar dipaksa rapat ke kanan dan tengah secara vertikal */
-            background-position: center right; 
-            
-            /* KUNCI 2: Gambar tidak berulang */
-            background-repeat: no-repeat; 
-            
-            /* KUNCI 3: Cover memastikan gambar menutupi tinggi section, 
-            tapi bagian kirinya yang kosong akan memanjang */
-            background-size: cover; 
-        }
-
-        .soft-blue-bg { background-color: #f8fbff; }
-        
-        /* Background tegas & menarik untuk section Galeri */
-        .primary-dark-gradient { 
-            background: linear-gradient(135deg, #0d6efd 0%, #0043a8 100%); 
-            color: #ffffff;
-        }
-        .section-badge-white {
-            border-color: #ffffff;
-            color: #ffffff;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Styling untuk gambar screenshot HP */
-        .app-screenshot {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background-color: transparent;
-        }
-        .app-screenshot:hover {
-            transform: translateY(-15px) scale(1.03);
-        }
-
-        /* Styling Tambahan untuk Tombol Dua Baris */
-.btn-primary-custom.d-flex.align-items-center {
-    max-width: fit-content; /* Agar tombol tidak melebar penuh di mobile jika tidak perlu */
-}
-
-/* Penyesuaian ikon di mobile agar tidak terlalu besar */
-@media (max-width: 576px) {
-    .btn-primary-custom i.fs-1 {
-        font-size: 1.8rem !important;
-    }
-    .btn-primary-custom span.fs-5 {
-        font-size: 1rem !important;
-    }
-}
-
-        /* Penyesuaian untuk layar mobile (HP) */
-        @media (max-width: 991px) {
-            .hero-gradient {
-                /* Di layar kecil, layout bertumpuk. 
-                Ubah posisi background agar tidak menabrak teks yang pindah ke atas/bawah */
-                background-position: bottom center; 
-                
-                /* Atau opsional: sembunyikan gambar background di mobile agar lebih bersih */
-                /* background-image: none; */ 
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 sticky-top border-bottom shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold fs-4" href="#">
-                <i class="bi bi-book-half text-blue me-2"></i>Asisten<span class="text-blue">PAI</span>
+                <i class="bi bi-book-half text-blue me-2"></i>Adgur <span class="text-blue">PAI SD</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -204,10 +38,9 @@
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link fw-medium px-3" href="#fitur">Fitur</a></li>
                     <li class="nav-item"><a class="nav-link fw-medium px-3" href="#galeri">Galeri</a></li>
-                    <li class="nav-item"><a class="nav-link fw-medium px-3" href="#tim">Tim Kami</a></li>
-                    <li class="nav-item"><a class="nav-link fw-medium px-3 text-warning" href="old/index.html"><i class="bi bi-archive me-1"></i>Versi Lama (File)</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium px-3" href="#tim">Tim Kami</a></li>                    
                     <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-                        <a href="https://administrasigpaibanjar.netlify.app/" class="btn btn-outline-custom btn-sm px-4">Login Guru</a>
+                        <a href="https://administrasigpaibanjar.netlify.app/" class="btn btn-outline-custom btn-sm px-4" title="Login Web Administrasi PAI Kota Banjar">Login Guru</a>
                     </li>
                 </ul>
             </div>
@@ -219,34 +52,34 @@
             <div class="row align-items-center flex-column-reverse flex-lg-row">
                 <div class="col-lg-6 text-center text-lg-start mt-5 mt-lg-0 pe-lg-5">
                     <div class="section-badge mb-3">Rilis Terbaru Terintegrasi</div>
+                    
+                    <!-- PERUBAHAN SEO: H1 dioptimasi menyisipkan kata kunci "SD Kota Banjar" -->
                     <h1 class="fw-bold mb-4" style="font-size: 2.8rem; line-height: 1.2;">
-                        Sistem Administrasi <span class="text-blue">Guru PAI</span> Berbasis Mobile & Cloud
+                        Sistem Administrasi <span class="text-blue">Guru PAI SD Kota Banjar</span> Berbasis Mobile
                     </h1>
+                    
+                    <!-- PERUBAHAN SEO: Paragraf awal (Lead) disisipkan variasi kata kunci dengan natural -->
                     <p class="lead text-muted mb-4">
-                        Tingkatkan produktivitas mengajar. Aplikasi mobile-ready dengan fitur pembuatan dokumen otomatis yang tersinkronisasi langsung melalui Akun Google Anda.
+                        Tingkatkan produktivitas mengajar Anda dengan pusat administrasi PAI Kota Banjar. Aplikasi AsistenPAI hadir untuk memudahkan pembuatan perangkat ajar Kurikulum Merdeka yang tersinkronisasi otomatis via Google.
                     </p>
                     
-                    <div class="alert alert-old-version d-inline-block text-start p-3 mb-4 w-100">
-                        <div class="d-flex align-items-center">
-                            <i class="bi bi-info-circle-fill text-warning fs-4 me-3"></i>
-                            <div>
-                                <h6 class="mb-0 fw-bold">Mencari Versi Lama?</h6>
-                                <p class="mb-0 small text-muted">Akses generator dokumen berbasis file bebas download di <a href="old/index.html" class="text-primary fw-bold text-decoration-none">halaman versi lama</a>.</p>
-                            </div>
+                    <div class="row g-2 justify-content-center justify-content-lg-start mt-3">
+                        <div class="col-6 col-lg-auto">
+                            <a href="#" id="btn-download" class="btn btn-primary-custom d-flex align-items-center justify-content-center gap-1 gap-md-3 w-100 h-100 p-2 p-md-3 text-start">
+                                <i class="bi bi-android2 fs-3 fs-md-1"></i>                            
+                                <div class="d-flex flex-column">
+                                    <!-- Ukuran font disesuaikan agar muat di 1 baris layar HP -->
+                                    <span class="fw-bold text-uppercase mb-0" style="font-size: 0.85rem; letter-spacing: 0.5px;">Download</span>
+                                    <span class="small opacity-75 fw-medium" style="font-size: 0.7rem;">APK v1.0.0</span>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-
-                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
-                        <a href="Guru-KKG_PAI_Kota_Banjar.apk" id="btn-download" class="btn btn-primary-custom d-flex align-items-center gap-3 text-start p-3">
-                            <i class="bi bi-android2 fs-1"></i>                            
-                            <div class="d-flex flex-column">
-                                <span class="fw-bold fs-5 text-uppercase mb-0" style="letter-spacing: 0.5px;">Download APK</span>
-                                <span class="small opacity-75 fw-medium">Versi Alpha (~29MB)</span>
-                            </div>
-                        </a>
-                        <a href="https://administrasigpaibanjar.netlify.app/" class="btn btn-outline-custom d-flex align-items-center justify-content-center gap-2">
-                            <i class="bi bi-laptop fs-5"></i> Buka Versi Web
-                        </a>
+                        <div class="col-6 col-lg-auto">
+                            <a href="https://administrasigpaibanjar.netlify.app/" class="btn btn-outline-custom d-flex align-items-center justify-content-center gap-1 gap-md-2 w-100 h-100 p-2 p-md-3 bg-white">
+                                <i class="bi bi-laptop fs-4 fs-md-3"></i> 
+                                <span class="fw-bold" style="font-size: 0.85rem;">Versi Web</span>
+                            </a>
+                        </div>
                     </div>
                     <div class="d-flex gap-4 mt-4 justify-content-center justify-content-lg-start">
                         <div class="text-center text-lg-start">
@@ -261,194 +94,323 @@
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="assets/images/app-hero.png" alt="Dashboard App" class="img-fluid rounded-4 app-screenshot" style="max-height: 600px;">
+                    <img src="assets/images/app-hero.png" alt="Aplikasi Administrasi PAI SD Kota Banjar" class="img-fluid rounded-4 app-screenshot" style="max-height: 600px;">
                 </div>
             </div>
         </div>
-    </section>
-
+    </section>    
     <section id="fitur" class="py-5 soft-blue-bg border-top">
         <div class="container py-5">
             <div class="text-center mb-5">
                 <div class="section-badge">Fitur Utama</div>
-                <h2 class="fw-bold">Semua dalam Satu Genggaman</h2>
+                <h2 class="fw-bold">Semua Kebutuhan Guru PAI dalam Satu Genggaman</h2>
             </div>
             
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="card feature-card card-grad-blue p-4">
-                        <div class="icon-box bg-blue-light">
-                            <i class="bi bi-folder-check"></i>
+                        <div class="icon-box bg-blue-light"><i class="bi bi-folder-check"></i></div>
+                        <h5 class="fw-bold">Manajemen Administrasi PAI</h5>
+                        <p class="text-muted small">Buat dan kelola RPP, Modul Ajar PAI SD, Prota, Promes, ATP, hingga KKTP. Terintegrasi dengan web administrasi untuk penarikan data via Excel.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card card-grad-green p-4">
+                        <div class="icon-box bg-green-light"><i class="bi bi-clipboard-check"></i></div>
+                        <h5 class="fw-bold">Presensi & Input Nilai</h5>
+                        <p class="text-muted small">Input kehadiran harian dan nilai siswa SD per kelas dengan antarmuka ramah pengguna. Data aman tersimpan lokal dan cloud.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card card-grad-yellow p-4">
+                        <div class="icon-box bg-yellow-light"><i class="bi bi-moon-stars"></i></div>
+                        <h5 class="fw-bold">Al-Qur'an & Jadwal Ibadah</h5>
+                        <p class="text-muted small">Al-Qur'an digital 114 Surah dengan penanda ayat, serta jadwal sholat real-time yang menyesuaikan lokasi mengajar Anda di Kota Banjar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Galeri -->
+    <section id="galeri" class="py-5 bg-white border-top">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <div class="section-badge">Galeri Aplikasi</div>
+                <h2 class="fw-bold">Efisien, Cepat & <span class="text-blue">Gratis via Apps Script</span></h2>
+                <p class="text-muted col-lg-8 mx-auto">Jelajahi antarmuka (UI) aplikasi administrasi yang kami kembangkan khusus untuk Guru PAI.</p>
+            </div>
+            
+            <div class="row justify-content-center g-4">
+                <!-- Galeri 1: Home -->
+                <div class="col-6 col-lg-3">
+                    <div class="card feature-card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-light">
+                        <div class="p-3 text-center">
+                            <img src="assets/images/ss_home.png" alt="Tampilan Beranda" class="img-fluid rounded-3 shadow-sm hover-scale">
                         </div>
-                        <h5 class="fw-bold">Manajemen Administrasi</h5>
-                        <p class="text-muted small">Buat dan kelola RPP, Modul Ajar, Prota, Promes, ATP, hingga KKTP. Terintegrasi dengan Web Adminisasi Guru untuk penarikan data via Excel.</p>
+                        <div class="card-body text-center p-3 pt-1">
+                            <h6 class="fw-bold text-blue mb-1">Beranda Utama</h6>
+                            <p class="small text-muted mb-0 d-none d-md-block">Dashboard interaktif untuk memantau ringkasan administrasi Anda hari ini.</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="col-md-4">
-                    <div class="card feature-card card-grad-green p-4">
-                        <div class="icon-box bg-green-light">
-                            <i class="bi bi-clipboard-check"></i>
+                <!-- Galeri 2: Administrasi -->
+                <div class="col-6 col-lg-3">
+                    <div class="card feature-card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-light">
+                        <div class="p-3 text-center">
+                            <img src="assets/images/ss_adm.png" alt="Tampilan Administrasi" class="img-fluid rounded-3 shadow-sm hover-scale">
                         </div>
-                        <h5 class="fw-bold">Presensi & Input Nilai</h5>
-                        <p class="text-muted small">Input kehadiran harian dan nilai siswa (Fikih, Akhlak, dll) per kelas dengan antarmuka yang ramah pengguna. Data aman tersimpan di lokal dan cloud.</p>
+                        <div class="card-body text-center p-3 pt-1">
+                            <h6 class="fw-bold text-blue mb-1">Pusat Administrasi</h6>
+                            <p class="small text-muted mb-0 d-none d-md-block">Kelola Modul Ajar dan RPP dengan database terpusat yang aman.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card feature-card card-grad-yellow p-4">
-                        <div class="icon-box bg-yellow-light">
-                            <i class="bi bi-moon-stars"></i>
+                <!-- Galeri 3: Pembiasaan -->
+                <div class="col-6 col-lg-3">
+                    <div class="card feature-card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-light">
+                        <div class="p-3 text-center">
+                            <img src="assets/images/ss_pembiasaan.png" alt="Tampilan Pembiasaan" class="img-fluid rounded-3 shadow-sm hover-scale">
                         </div>
-                        <h5 class="fw-bold">Al-Qur'an & Jadwal Ibadah</h5>
-                        <p class="text-muted small">Al-Qur'an digital 114 Surah dengan penanda ayat terakhir dibaca, serta jadwal sholat real-time yang menyesuaikan lokasi mengajar Anda.</p>
+                        <div class="card-body text-center p-3 pt-1">
+                            <h6 class="fw-bold text-blue mb-1">Jurnal Pembiasaan</h6>
+                            <p class="small text-muted mb-0 d-none d-md-block">Rekap rutinitas ibadah harian siswa secara instan dari genggaman.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Galeri 4: Profil -->
+                <div class="col-6 col-lg-3">
+                    <div class="card feature-card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-light">
+                        <div class="p-3 text-center">
+                            <img src="assets/images/ss_profil.png" alt="Tampilan Profil" class="img-fluid rounded-3 shadow-sm hover-scale">
+                        </div>
+                        <div class="card-body text-center p-3 pt-1">
+                            <h6 class="fw-bold text-blue mb-1">Profil & Sinkronisasi</h6>
+                            <p class="small text-muted mb-0 d-none d-md-block">Personalisasi data diri dan pastikan akun selalu terhubung dengan sistem.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="galeri" class="py-5 primary-dark-gradient">
-        <div class="container py-5">
-            <div class="text-center mb-5">
-                <div class="section-badge section-badge-white">Galeri Aplikasi</div>
-                <h2 class="fw-bold text-white mb-3">Intip Tampilan AsistenPAI</h2>
-                <p class="text-white-50" style="max-width: 600px; margin: 0 auto;">Karena kami mendistribusikan aplikasi secara langsung (tanpa Play Store), berikut adalah cuplikan fitur dan kemudahan yang akan Anda nikmati.</p>
-            </div>
-            
-            <div class="row justify-content-center g-4 mt-3">
-                <div class="col-6 col-md-3 text-center">
-                    <img src="https://via.placeholder.com/300x600?text=Menu+Administrasi" alt="Menu Administrasi" class="img-fluid app-screenshot mb-3">
-                    <h6 class="text-white fw-bold">Administrasi Guru</h6>
-                </div>
-                <div class="col-6 col-md-3 text-center">
-                    <img src="https://via.placeholder.com/300x600?text=Presensi+Kelas" alt="Presensi Kelas" class="img-fluid app-screenshot mb-3">
-                    <h6 class="text-white fw-bold">Presensi Praktis</h6>
-                </div>
-                <div class="col-6 col-md-3 text-center">
-                    <img src="https://via.placeholder.com/300x600?text=Input+Nilai" alt="Input Nilai" class="img-fluid app-screenshot mb-3">
-                    <h6 class="text-white fw-bold">Input Nilai Lokal</h6>
-                </div>
-                <div class="col-6 col-md-3 text-center">
-                    <img src="https://via.placeholder.com/300x600?text=Al-Quran" alt="Al-Quran Digital" class="img-fluid app-screenshot mb-3">
-                    <h6 class="text-white fw-bold">Al-Qur'an Digital</h6>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Section Tim Kami -->
     <section id="tim" class="py-5 bg-white border-top">
         <div class="container py-5">
             <div class="text-center mb-5">
-                <div class="section-badge">Di Balik Layar</div>
-                <h2 class="fw-bold">Tim Pengembang & Penyusun</h2>
-                <p class="text-muted">Aplikasi ini dirancang dari guru, oleh guru, dan untuk guru.</p>
+                <div class="section-badge">Tim Kami</div>
+                <h2 class="fw-bold">Tim Penyusun Administrasi Guru PAI SD</h2>
+                <p class="text-muted">Kota Banjar - Semester 1 Tahun Pelajaran 2026/2027</p>
             </div>
 
-            <div class="row justify-content-center g-4">
-                <div class="col-md-5">
-                    <h5 class="fw-bold text-center mb-4 text-secondary">Penyusun Administrasi</h5>
-                    <div class="team-card">
-                        <img src="assets/images/anisa.png" alt="Foto Profil" class="team-avatar">
-                        <h5 class="fw-bold mb-1">Anisa Nurbasari, S.Pd.I.</h5>
-                        <p class="text-muted small mb-2"><i class="bi bi-building me-1"></i> UPTD SDN 1 Sukamukti</p>
-                        <span class="badge bg-light text-dark border">Guru PAI</span>
+            <!-- Pengurus Inti (Dua Kolom di HP) -->
+            <div class="row justify-content-center g-3 g-md-4 mb-5">
+                <div class="col-6 col-md-5 col-lg-4">
+                    <div class="team-card h-100 p-3 p-md-4">
+                        <i class="bi bi-person-circle text-blue mb-3 d-block" style="font-size: clamp(3rem, 8vw, 5rem);"></i>
+                        <h6 class="fw-bold mb-1">Sugandi, M.Pd.</h6>
+                        <p class="text-blue small fw-bold mb-2">Ketua Tim</p>
+                        <p class="text-muted small mb-0" style="font-size: 0.75rem;"><i class="bi bi-building me-1"></i>SDN 4 Pataruman</p>
                     </div>
                 </div>
+                <div class="col-6 col-md-5 col-lg-4">
+                    <div class="team-card h-100 p-3 p-md-4">
+                        <i class="bi bi-person-circle text-blue mb-3 d-block" style="font-size: clamp(3rem, 8vw, 5rem);"></i>
+                        <h6 class="fw-bold mb-1">Aam Amarudin, S.Pd.I</h6>
+                        <p class="text-blue small fw-bold mb-2">Sekretaris</p>
+                        <p class="text-muted small mb-0" style="font-size: 0.75rem;"><i class="bi bi-building me-1"></i>SDN 2 Karyamukti</p>
+                    </div>
+                </div>
+            </div>
 
-                <div class="col-md-5">
-                    <h5 class="fw-bold text-center mb-4 text-secondary">Pengembang Aplikasi</h5>
-                    <div class="team-card">
-                        <img src="assets/images/yoonesh.png" alt="Foto Profil" class="team-avatar">
-                        <h5 class="fw-bold mb-1">Yoonesh Adrian</h5>
-                        <p class="text-muted small mb-2"><i class="bi bi-code-slash me-1"></i> Satset Web / App Dev</p>
-                        <span class="badge bg-light text-dark border">Fullstack Developer</span>
+            <!-- Tim Verifikator (Dua Kolom di HP) -->
+            <div class="text-center mb-4">
+                <h5 class="fw-bold">Verifikator</h5>
+            </div>
+            <div class="row justify-content-center g-3 g-md-4 mb-5">
+                <div class="col-6 col-md-4">
+                    <div class="team-card h-100 p-3 p-md-4">
+                        <i class="bi bi-person-badge text-secondary mb-2 d-block" style="font-size: 2.5rem;"></i>
+                        <h6 class="fw-bold mb-1" style="font-size: 0.9rem;">Dewi Pajriyanti, M.Pd</h6>
+                        <p class="text-muted small mb-0" style="font-size: 0.75rem;"><i class="bi bi-building me-1"></i>SDN 2 Muktisari</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="team-card h-100 p-3 p-md-4">
+                        <i class="bi bi-person-badge text-secondary mb-2 d-block" style="font-size: 2.5rem;"></i>
+                        <h6 class="fw-bold mb-1" style="font-size: 0.9rem;">Anisa Nurbasari, M.Pd</h6>
+                        <p class="text-muted small mb-0" style="font-size: 0.75rem;"><i class="bi bi-building me-1"></i>SDN 1 Sukamukti</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="team-card h-100 p-3 p-md-4">
+                        <i class="bi bi-person-badge text-secondary mb-2 d-block" style="font-size: 2.5rem;"></i>
+                        <h6 class="fw-bold mb-1" style="font-size: 0.9rem;">H. Nurhalimah, S.Pd.I</h6>
+                        <p class="text-muted small mb-0" style="font-size: 0.75rem;"><i class="bi bi-building me-1"></i>SDN 2 Hegarsari</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tim Penyusun (Dua Kolom di HP) -->
+            <div class="text-center mb-4">
+                <h5 class="fw-bold">Penyusun</h5>
+            </div>
+            <div class="row justify-content-center g-3 g-md-4">
+                <div class="col-6 col-md-4">
+                    <div class="team-card h-100 card-grad-blue p-3">
+                        <i class="bi bi-person text-blue mb-2 d-block" style="font-size: 2rem;"></i>
+                        <h6 class="fw-bold mb-1" style="font-size: 0.85rem;">Rina, S.Pd.I., M.Pd.</h6>
+                        <span class="badge bg-primary mb-2" style="font-size: 0.7rem;">Kelas 1</span>
+                        <p class="text-muted small mb-0" style="font-size: 0.75rem;"><i class="bi bi-building me-1"></i>SDN 1 Cibeureum</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="team-card h-100 card-grad-blue p-3">
+                        <i class="bi bi-person text-blue mb-2 d-block" style="font-size: 2rem;"></i>
+                        <h6 class="fw-bold mb-1" style="font-size: 0.85rem;">Arif Hidayat, S.Pd.I</h6>
+                        <span class="badge bg-primary mb-2" style="font-size: 0.7rem;">Kelas 2</span>
+                        <p class="text-muted small mb-0" style="font-size: 0.75rem;"><i class="bi bi-building me-1"></i>SDN 1 Banjar</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="team-card h-100 card-grad-blue p-3">
+                        <i class="bi bi-person text-blue mb-2 d-block" style="font-size: 2rem;"></i>
+                        <h6 class="fw-bold mb-1" style="font-size: 0.85rem;">Kokom Qomariyah, S.Pd.I.</h6>
+                        <span class="badge bg-primary mb-2" style="font-size: 0.7rem;">Kelas 3</span>
+                        <p class="text-muted small mb-0" style="font-size: 0.75rem;"><i class="bi bi-building me-1"></i>SDN 2 Rejasari</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="team-card h-100 card-grad-blue p-3">
+                        <i class="bi bi-person text-blue mb-2 d-block" style="font-size: 2rem;"></i>
+                        <h6 class="fw-bold mb-1" style="font-size: 0.85rem;">Aris Budianto, S.Pd.I</h6>
+                        <span class="badge bg-primary mb-2" style="font-size: 0.7rem;">Kelas 4</span>
+                        <p class="text-muted small mb-0" style="font-size: 0.75rem;"><i class="bi bi-building me-1"></i>SDN 7 Kujangsari</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="team-card h-100 card-grad-blue p-3">
+                        <i class="bi bi-person text-blue mb-2 d-block" style="font-size: 2rem;"></i>
+                        <h6 class="fw-bold mb-1" style="font-size: 0.85rem;">Jajang Badruzaman, S.Pd.I.</h6>
+                        <span class="badge bg-primary mb-2" style="font-size: 0.7rem;">Kelas 5</span>
+                        <p class="text-muted small mb-0" style="font-size: 0.75rem;"><i class="bi bi-building me-1"></i>SDN 3 Pataruman</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="team-card h-100 card-grad-blue p-3">
+                        <i class="bi bi-person text-blue mb-2 d-block" style="font-size: 2rem;"></i>
+                        <h6 class="fw-bold mb-1" style="font-size: 0.85rem;">Nur Rohmatul H., S.Pd.I.</h6>
+                        <span class="badge bg-primary mb-2" style="font-size: 0.7rem;">Kelas 6</span>
+                        <p class="text-muted small mb-0" style="font-size: 0.75rem;"><i class="bi bi-building me-1"></i>SDN 3 Mekarharja</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-dark text-white py-5">
+    <!-- Section Pusat Informasi & Bantuan -->
+    <section id="informasi" class="py-5 bg-light border-top">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <div class="section-badge bg-white">Pusat Informasi</div>
+                <h2 class="fw-bold">Pelajari Lebih Lanjut</h2>
+                <p class="text-muted col-lg-7 mx-auto">Akses panduan lengkap, alur instalasi, aturan penggunaan, hingga kontak dukungan untuk memaksimalkan pengalaman Anda menggunakan Adgur PAI SD.</p>
+            </div>
+            
+            <div class="row justify-content-center g-3 g-md-4">
+                <!-- Card 1: Alur Aplikasi -->
+                <div class="col-6 col-lg-3">
+                    <a href="page/alur-aplikasi.php" class="text-decoration-none">
+                        <div class="card feature-card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-white p-3 p-md-4 text-center hover-scale d-flex flex-column align-items-center justify-content-center">
+                            <div class="rounded-circle bg-primary bg-opacity-10 text-primary mb-3 d-flex align-items-center justify-content-center" style="width: 65px; height: 65px; font-size: 1.8rem;">
+                                <i class="bi bi-map-fill"></i>
+                            </div>
+                            <h6 class="fw-bold text-dark mb-2" style="font-size: 0.95rem;">Alur Aplikasi</h6>
+                            <p class="small text-muted mb-0 d-none d-md-block">Panduan urutan cara instalasi hingga aktivasi akun Anda.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 2: Tutorial Aplikasi -->
+                <div class="col-6 col-lg-3">
+                    <a href="page/tutorial-aplikasi.php" class="text-decoration-none">
+                        <div class="card feature-card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-white p-3 p-md-4 text-center hover-scale d-flex flex-column align-items-center justify-content-center">
+                            <div class="rounded-circle bg-danger bg-opacity-10 text-danger mb-3 d-flex align-items-center justify-content-center" style="width: 65px; height: 65px; font-size: 1.8rem;">
+                                <i class="bi bi-play-btn-fill"></i>
+                            </div>
+                            <h6 class="fw-bold text-dark mb-2" style="font-size: 0.95rem;">Video Tutorial</h6>
+                            <p class="small text-muted mb-0 d-none d-md-block">Kumpulan video panduan fitur HP dan penarikan data Web.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 3: Kontak Dukungan -->
+                <div class="col-6 col-lg-3">
+                    <a href="page/kontak.php" class="text-decoration-none">
+                        <div class="card feature-card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-white p-3 p-md-4 text-center hover-scale d-flex flex-column align-items-center justify-content-center">
+                            <div class="rounded-circle bg-success bg-opacity-10 text-success mb-3 d-flex align-items-center justify-content-center" style="width: 65px; height: 65px; font-size: 1.8rem;">
+                                <i class="bi bi-headset"></i>
+                            </div>
+                            <h6 class="fw-bold text-dark mb-2" style="font-size: 0.95rem;">Hubungi Kami</h6>
+                            <p class="small text-muted mb-0 d-none d-md-block">Kontak pengurus KKG dan tim teknis pengembang aplikasi.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 4: Persyaratan Penggunaan -->
+                <div class="col-6 col-lg-3">
+                    <a href="page/persyaratan-penggunaan.php" class="text-decoration-none">
+                        <div class="card feature-card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-white p-3 p-md-4 text-center hover-scale d-flex flex-column align-items-center justify-content-center">
+                            <div class="rounded-circle bg-warning bg-opacity-10 text-warning mb-3 d-flex align-items-center justify-content-center" style="width: 65px; height: 65px; font-size: 1.8rem;">
+                                <i class="bi bi-shield-lock-fill"></i>
+                            </div>
+                            <h6 class="fw-bold text-dark mb-2" style="font-size: 0.95rem;">Persyaratan</h6>
+                            <p class="small text-muted mb-0 d-none d-md-block">Aturan lisensi, batasan penggunaan, dan hak cipta aplikasi.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="bg-dark text-white py-5 border-top">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mb-4 mb-md-0">
-                    <h4 class="fw-bold mb-3"><i class="bi bi-book-half text-primary me-2"></i>Asisten<span class="text-primary">PAI</span></h4>
-                    <p class="text-secondary small" style="max-width: 300px;">Sistem manajemen administrasi dan utilitas keagamaan terpadu untuk mempermudah tugas mulia Guru Pendidikan Agama Islam.</p>
+                    <h4 class="fw-bold mb-3"><i class="bi bi-book-half text-primary me-2"></i>Adgur <span class="text-blue">PAI SD</span></h4>
+                    <!-- PERUBAHAN SEO: Menambahkan kata kunci target pada bio footer -->
+                    <p class="text-secondary small" style="max-width: 350px;">Sistem manajemen administrasi dan utilitas keagamaan terpadu untuk mempermudah tugas Guru Pendidikan Agama Islam (PAI) tingkat SD di lingkungan Kota Banjar dan sekitarnya.</p>
                 </div>
+                <!-- Sisa elemen footer persis sama dengan kode original Anda -->
                 <div class="col-md-3 mb-4 mb-md-0">
                     <h6 class="fw-bold mb-3">Tautan Ekosistem</h6>
                     <ul class="list-unstyled small">
-                        <li class="mb-2"><a href="https://admin.domainanda.com" class="text-secondary text-decoration-none hover-white">Web Administrasi Guru</a></li>
-                        <li class="mb-2"><a href="old/index.html" class="text-secondary text-decoration-none hover-white">Versi Lama (File Generator)</a></li>
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none hover-white">Media Pembelajaran Interaktif</a></li>
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none hover-white">PAI Edusite</a></li>
+                        <li class="mb-2"><a href="https://administrasigpaisdkotabanjar.my.id/" class="text-secondary text-decoration-none hover-white">Web Administrasi Guru</a></li>                        
+                        <li class="mb-2"><a href="https://mediapembelajaranpaikotabanjar.vercel.app/index.html" class="text-secondary text-decoration-none hover-white">Media Pembelajaran Interaktif</a></li>
+                        <li class="mb-2"><a href="https://sites.google.com/guru.sd.belajar.id/aplikasikkgpaisdkotabanjar/pai-edusuite" class="text-secondary text-decoration-none hover-white">PAI Edusite</a></li>
+                        <li class="mb-2"><a href="https://administrasigpaisdkotabanjar.my.id/soal/" class="text-secondary text-decoration-none hover-white">Bank Soal PAI</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
                     <h6 class="fw-bold mb-3">Bantuan</h6>
                     <ul class="list-unstyled small">
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none hover-white">Panduan Sinkronisasi</a></li>
-                        <li class="mb-2"><a href="#" class="text-secondary text-decoration-none hover-white">Kontak Dukungan</a></li>
+                        <li class="mb-2"><a href="page/tutorial-aplikasi.php" class="text-secondary text-decoration-none hover-white">Tutorial Aplikasi</a></li>
+                        <li class="mb-2"><a href="page/alur-aplikasi.php" class="text-secondary text-decoration-none hover-white">Alur Aplikasi</a></li>
+                        <li class="mb-2"><a href="page/kontak.php" class="text-secondary text-decoration-none hover-white">Kontak Dukungan</a></li>
+                        <li class="mb-2"><a href="page/persyaratan-penggunaan.php" class="text-secondary text-decoration-none hover-white">Persyaratan Penggunaan</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-top border-secondary mt-4 pt-4 text-center text-secondary small">
-                &copy; 2026 AsistenPAI. Dikembangkan dengan ❤️ untuk Pendidikan Indonesia.
+                &copy; 2026 Adgur PAI SD - KKG PAI Kota Banjar. Dikembangkan dengan ❤️ untuk Pendidikan Indonesia.
             </div>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <script>
-        // Konfigurasi Supabase
-        const SUPABASE_URL = 'https://oisrtlcxdwgvzrxrlzpb.supabase.co'; 
-        //const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pc3J0bGN4ZHdndnpyeHJsenBiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwMzM3OTEsImV4cCI6MjA3ODYwOTc5MX0.aI162olkIydnJrRxLnC0NsBU9umySmd2nWSTt8Hc1ec'; 
-        const SUPABASE_KEY = '';
-        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-        // Fungsi mengambil data terbaru
-        async function fetchStats() {
-            const { data, error } = await _supabase
-                .from('stats')
-                .select('*');
-
-            if (data) {
-                data.forEach(item => {
-                    if (item.id === 'page_views') document.getElementById('view-count').innerText = item.count.toLocaleString();
-                    if (item.id === 'downloads') document.getElementById('download-count').innerText = item.count.toLocaleString();
-                });
-            }
-        }
-
-        // Fungsi mencatat kunjungan (Page View)
-        async function trackVisit() {
-            await _supabase.rpc('increment_stat', { row_id: 'page_views' });
-            fetchStats();
-        }
-
-        // Fungsi mencatat download
-        async function trackDownload(e) {
-            // Jangan hentikan download asli, cukup kirim sinyal ke supabase
-            await _supabase.rpc('increment_stat', { row_id: 'downloads' });
-            fetchStats();
-        }
-
-        // Inisialisasi saat halaman dimuat
-        document.addEventListener('DOMContentLoaded', () => {
-            trackVisit();
-            
-            // Pasang event listener ke tombol download
-            // Pastikan element <a> APK Anda punya id="download-apk"
-            const downloadBtn = document.querySelector('a[href*=".apk"]');
-            if (downloadBtn) {
-                downloadBtn.addEventListener('click', trackDownload);
-            }
-        });
-    </script>
-    <style>
-        .hover-white:hover { color: #fff !important; }
-    </style>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
